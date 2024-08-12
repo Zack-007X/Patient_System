@@ -4,11 +4,7 @@
 
 function Repair_GetSearchParameter(fileType) {
     var RepairSearchObject = new Object();
-RepairSearchObject.bookingId = $("#s_Repair_bookingId").val();
-RepairSearchObject.repairCode = $("#s_Repair_repairCode").val();
-RepairSearchObject.technicianId = $("#s_Repair_technicianId").val();
-RepairSearchObject.startDate = formatDateForGetParameter(getDate($("#s_Repair_startDate").val()));
-RepairSearchObject.endDate = formatDateForGetParameter(getDate($("#s_Repair_endDate").val()));
+    RepairSearchObject.repairCode = $("#s_Repair_repairCode").val();
 
 
     RepairSearchObject.fileType = fileType;
@@ -19,11 +15,8 @@ RepairSearchObject.endDate = formatDateForGetParameter(getDate($("#s_Repair_endD
 }
 
 function Repair_FeedDataToSearchForm(data) {
-DropDownClearFormAndFeedWithData($("#s_Repair_bookingId"), data, "id", "bookingNumber", "item_bookingId", data.bookingId);
-$("#s_Repair_repairCode").val(data.repairCode);
-DropDownClearFormAndFeedWithData($("#s_Repair_technicianId"), data, "id", "nickname", "item_technicianId", data.technicianId);
-$("#s_Repair_startDate").val(formatDate(data.startDate));
-$("#s_Repair_endDate").val(formatDate(data.endDate));
+
+    $("#s_Repair_repairCode").val(data.repairCode);
 
 }
 
@@ -50,7 +43,7 @@ function Repair_DoSearch(fileType) {
         return;
     }
 
-    var p = $.param(Repair_GetSearchParameter(fileType));    
+    var p = $.param(Repair_GetSearchParameter(fileType));
     var report_url = apisite + "/api/v1/Repair/Repair_report?" + p;
 
     if (fileType === "pdf") {
@@ -69,7 +62,7 @@ function Repair_DoSearch(fileType) {
             endLoad();
         };
         startLoad();
-        AjaxGetBinaryRequest(report_url, successFunc, AlertDanger);       
-	}
+        AjaxGetBinaryRequest(report_url, successFunc, AlertDanger);
+    }
 }
 

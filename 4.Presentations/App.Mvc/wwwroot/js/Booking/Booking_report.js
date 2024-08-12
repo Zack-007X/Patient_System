@@ -4,11 +4,7 @@
 
 function Booking_GetSearchParameter(fileType) {
     var BookingSearchObject = new Object();
-BookingSearchObject.bookingNumber = $("#s_Booking_bookingNumber").val();
-BookingSearchObject.scheduledRepairDate = formatDateForGetParameter(getDate($("#s_Booking_scheduledRepairDate").val()));
-BookingSearchObject.spacecraftName = $("#s_Booking_spacecraftName").val();
-BookingSearchObject.registrationNumber = $("#s_Booking_registrationNumber").val();
-BookingSearchObject.staffId = $("#s_Booking_staffId").val();
+    BookingSearchObject.bookingNumber = $("#s_Booking_bookingNumber").val();
 
 
     BookingSearchObject.fileType = fileType;
@@ -19,11 +15,7 @@ BookingSearchObject.staffId = $("#s_Booking_staffId").val();
 }
 
 function Booking_FeedDataToSearchForm(data) {
-$("#s_Booking_bookingNumber").val(data.bookingNumber);
-$("#s_Booking_scheduledRepairDate").val(formatDate(data.scheduledRepairDate));
-$("#s_Booking_spacecraftName").val(data.spacecraftName);
-$("#s_Booking_registrationNumber").val(data.registrationNumber);
-DropDownClearFormAndFeedWithData($("#s_Booking_staffId"), data, "id", "nickname", "item_staffId", data.staffId);
+    $("#s_Booking_bookingNumber").val(data.bookingNumber);
 
 }
 
@@ -50,7 +42,7 @@ function Booking_DoSearch(fileType) {
         return;
     }
 
-    var p = $.param(Booking_GetSearchParameter(fileType));    
+    var p = $.param(Booking_GetSearchParameter(fileType));
     var report_url = apisite + "/api/v1/Booking/Booking_report?" + p;
 
     if (fileType === "pdf") {
@@ -69,7 +61,7 @@ function Booking_DoSearch(fileType) {
             endLoad();
         };
         startLoad();
-        AjaxGetBinaryRequest(report_url, successFunc, AlertDanger);       
-	}
+        AjaxGetBinaryRequest(report_url, successFunc, AlertDanger);
+    }
 }
 

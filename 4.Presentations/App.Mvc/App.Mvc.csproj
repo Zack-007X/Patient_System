@@ -836,24 +836,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Views\BookingView\Booking.cshtml" />
-    <None Include="Views\BookingView\Booking_d.cshtml" />
-    <None Include="Views\BookingView\Booking_inline.cshtml" />
-    <None Include="Views\BookingView\Booking_pivot.cshtml" />
-    <None Include="Views\BookingView\Booking_report.cshtml" />
     <None Include="Views\CustomerView\Customer.cshtml" />
-    <None Include="Views\CustomerView\Customer_d.cshtml" />
-    <None Include="Views\CustomerView\Customer_inline.cshtml" />
-    <None Include="Views\CustomerView\Customer_pivot.cshtml" />
-    <None Include="Views\CustomerView\Customer_report.cshtml" />
     <None Include="Views\PaymentView\Payment.cshtml" />
-    <None Include="Views\PaymentView\Payment_d.cshtml" />
-    <None Include="Views\PaymentView\Payment_inline.cshtml" />
-    <None Include="Views\PaymentView\Payment_pivot.cshtml" />
     <None Include="Views\PaymentView\Payment_report.cshtml" />
     <None Include="Views\RepairView\Repair.cshtml" />
-    <None Include="Views\RepairView\Repair_d.cshtml" />
-    <None Include="Views\RepairView\Repair_inline.cshtml" />
-    <None Include="Views\RepairView\Repair_pivot.cshtml" />
     <None Include="Views\RepairView\Repair_report.cshtml" />
     <None Include="Views\UserView\User.cshtml" />
     <None Include="Views\UserView\User_d.cshtml" />
@@ -861,30 +847,13 @@
     <None Include="Views\UserView\User_pivot.cshtml" />
     <None Include="Views\UserView\User_report.cshtml" />
     <None Include="wwwroot\js\Booking\Booking.js" />
-    <None Include="wwwroot\js\Booking\Booking_d.js" />
-    <None Include="wwwroot\js\Booking\Booking_inline.js" />
-    <None Include="wwwroot\js\Booking\Booking_pivot.js" />
     <None Include="wwwroot\js\Booking\Booking_report.js" />
     <None Include="wwwroot\js\Customer\Customer.js" />
-    <None Include="wwwroot\js\Customer\Customer_d.js" />
-    <None Include="wwwroot\js\Customer\Customer_inline.js" />
-    <None Include="wwwroot\js\Customer\Customer_pivot.js" />
-    <None Include="wwwroot\js\Customer\Customer_report.js" />
     <None Include="wwwroot\js\Payment\Payment.js" />
-    <None Include="wwwroot\js\Payment\Payment_d.js" />
-    <None Include="wwwroot\js\Payment\Payment_inline.js" />
-    <None Include="wwwroot\js\Payment\Payment_pivot.js" />
     <None Include="wwwroot\js\Payment\Payment_report.js" />
     <None Include="wwwroot\js\Repair\Repair.js" />
-    <None Include="wwwroot\js\Repair\Repair_d.js" />
-    <None Include="wwwroot\js\Repair\Repair_inline.js" />
-    <None Include="wwwroot\js\Repair\Repair_pivot.js" />
     <None Include="wwwroot\js\Repair\Repair_report.js" />
     <None Include="wwwroot\js\User\User.js" />
-    <None Include="wwwroot\js\User\User_d.js" />
-    <None Include="wwwroot\js\User\User_inline.js" />
-    <None Include="wwwroot\js\User\User_pivot.js" />
-    <None Include="wwwroot\js\User\User_report.js" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="IdentityModel" Version="6.1.0" />
