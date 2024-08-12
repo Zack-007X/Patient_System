@@ -842,10 +842,6 @@
     <None Include="Views\RepairView\Repair.cshtml" />
     <None Include="Views\RepairView\Repair_report.cshtml" />
     <None Include="Views\UserView\User.cshtml" />
-    <None Include="Views\UserView\User_d.cshtml" />
-    <None Include="Views\UserView\User_inline.cshtml" />
-    <None Include="Views\UserView\User_pivot.cshtml" />
-    <None Include="Views\UserView\User_report.cshtml" />
     <None Include="wwwroot\js\Booking\Booking.js" />
     <None Include="wwwroot\js\Booking\Booking_report.js" />
     <None Include="wwwroot\js\Customer\Customer.js" />
