@@ -71,9 +71,29 @@ builder.Services.AddDbContext<DataContext>(c =>
 );
 
 
+builder.Services.AddScoped<IBaseRepository<BookingEntity, Guid>, BaseRepository<BookingEntity, Guid>>();
+builder.Services.AddScoped<IBookingService, BookingService>();
+
+builder.Services.AddScoped<IBaseRepository<CustomerEntity, Guid>, BaseRepository<CustomerEntity, Guid>>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
+builder.Services.AddScoped<IBaseRepository<PaymentEntity, Guid>, BaseRepository<PaymentEntity, Guid>>();
+builder.Services.AddScoped<IPaymentService, PaymentService>();
+
+builder.Services.AddScoped<IBaseRepository<RepairEntity, Guid>, BaseRepository<RepairEntity, Guid>>();
+builder.Services.AddScoped<IRepairService, RepairService>();
+
 builder.Services.AddScoped<IBaseRepository<UserEntity, Guid>, BaseRepository<UserEntity, Guid>>();
 builder.Services.AddScoped<IUserService, UserService>();
 
+
+builder.Services.AddAutoMapper(typeof(BookingMappingProfile));
+
+builder.Services.AddAutoMapper(typeof(CustomerMappingProfile));
+
+builder.Services.AddAutoMapper(typeof(PaymentMappingProfile));
+
+builder.Services.AddAutoMapper(typeof(RepairMappingProfile));
 
 builder.Services.AddAutoMapper(typeof(UserMappingProfile));
 

@@ -1,0 +1,183 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Repair";
+}
+
+<div class="modal fade" id="RepairModel" style="z-index:1500" tabindex="-1" role="dialog" aria-labelledby="RepairModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="RepairModelLabel">บันทึกข้อมูล Repair</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+<input class="form-control" type="hidden" id="Repair_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Repair_bookingId" for="Repair_bookingId">Booking</label>
+	    <select class="form-control" id="Repair_bookingId" iLabel="Booking" iRequire="false" iGroup="Repair" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Repair_repairCode" for="Repair_repairCode">เลขที่การซ่อม</label>
+	    <input class="form-control" type="text" id="Repair_repairCode" iLabel="เลขที่การซ่อม" iRequire="false" iGroup="Repair"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Repair_technicianId" for="Repair_technicianId">ช่างซ่อม</label>
+	    <select class="form-control" id="Repair_technicianId" iLabel="ช่างซ่อม" iRequire="false" iGroup="Repair" ></select>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Repair_startDate" for="Repair_startDate">วันที่เริ่มซ่อม</label>
+	    <input class="form-control" type="text" id="Repair_startDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันที่เริ่มซ่อม" iRequire="false" iGroup="Repair"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Repair_endDate" for="Repair_endDate">วันที่ซ่อมเสร็จ</label>
+	    <input class="form-control" type="text" id="Repair_endDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันที่ซ่อมเสร็จ" iRequire="false" iGroup="Repair"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Repair_totalCostEA" for="Repair_totalCostEA">มูลค่าการซ่อมเป็นหน่วย EA</label>
+	    <input class="form-control" type="text" oninput="formatInputNumber(this)" id="Repair_totalCostEA" iLabel="มูลค่าการซ่อมเป็นหน่วย EA" iRequire="false" iGroup="Repair"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-12">
+	    <label id="lab_Repair_repairNote" for="Repair_repairNote">หมายเหตุการซ่อม</label>
+	    <textarea  class="form-control" rows="4" cols="50" id="Repair_repairNote" iLabel="หมายเหตุการซ่อม" iRequire="false" iGroup="Repair" ></textarea>
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:Repair_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">Repair</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+        
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Repair_bookingId' for='s_Repair_bookingId'>Booking</label>
+                            <select class="form-control" id="s_Repair_bookingId" iLabel="Booking" iRequire="false" iGroup="s_Repair" title='Booking' placeholder='Booking'></select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Repair_repairCode' for='s_Repair_repairCode'>เลขที่การซ่อม</label>
+                            <input class="form-control" type="text" id="s_Repair_repairCode" iLabel="เลขที่การซ่อม" iRequire="false" iGroup="s_Repair" title='เลขที่การซ่อม' placeholder='เลขที่การซ่อม' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Repair_technicianId' for='s_Repair_technicianId'>ช่างซ่อม</label>
+                            <select class="form-control" id="s_Repair_technicianId" iLabel="ช่างซ่อม" iRequire="false" iGroup="s_Repair" title='ช่างซ่อม' placeholder='ช่างซ่อม'></select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Repair_startDate' for='s_Repair_startDate'>วันที่เริ่มซ่อม</label>
+                            <input class="form-control" type="text" id="s_Repair_startDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันที่เริ่มซ่อม" iRequire="false" iGroup="s_Repair" title='วันที่เริ่มซ่อม' placeholder='วันที่เริ่มซ่อม' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Repair_endDate' for='s_Repair_endDate'>วันที่ซ่อมเสร็จ</label>
+                            <input class="form-control" type="text" id="s_Repair_endDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันที่ซ่อมเสร็จ" iRequire="false" iGroup="s_Repair" title='วันที่ซ่อมเสร็จ' placeholder='วันที่ซ่อมเสร็จ' />
+                        </div>
+
+
+                    <div class="form-group col-sm-3">
+                        <button class="btn btn-info" onclick="javascript:Repair_DoSearch();"><i class="fa fa-search" style="font-size: 14px;"></i> ค้นหา</button>
+                        <button class="btn btn-info" onclick="javascript:Repair_GoCreate();"><i class="fa fa-plus" style="font-size: 14px;"></i> เพิ่มรายการ</button>
+                        <button style="display:none;" class="btn btn-info" onclick="javascript:Repair_GetSelect('id');">ดึงตัวเลือก</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="RepairTable" class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <!--<th>เลือก</th>-->
+                                    <th>เครื่องมือ</th>
+            <th><label id='h_Repair_bookingId'>Booking</label></th>
+            <th><label id='h_Repair_repairCode'>เลขที่การซ่อม</label></th>
+            <th><label id='h_Repair_technicianId'>ช่างซ่อม</label></th>
+            <th><label id='h_Repair_startDate'>วันที่เริ่มซ่อม</label></th>
+            <th><label id='h_Repair_endDate'>วันที่ซ่อมเสร็จ</label></th>
+            <th><label id='h_Repair_totalCostEA'>มูลค่าการซ่อมเป็นหน่วย EA</label></th>
+            <th><label id='h_Repair_repairNote'>หมายเหตุการซ่อม</label></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/Repair/Repair.js"></script>
+    <script>
+        $(document).ready(function () {
+            Repair_InitiateDataTable();
+            Repair_InitialForm();
+            SetupValidationRemark("Repair");
+        });
+    </script>
+}
+

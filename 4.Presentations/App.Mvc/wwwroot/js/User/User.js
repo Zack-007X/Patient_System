@@ -26,9 +26,10 @@ $("#User_fullname").val(data.fullname);
 $("#User_phone").val(data.phone);
 $("#User_email").val(data.email);
 $("#User_password").val(data.password);
-CheckBoxFeedDataToForm($("#User_isAdmin"), data.isAdmin);
-CheckBoxFeedDataToForm($("#User_isWorker"), data.isWorker);
-CheckBoxFeedDataToForm($("#User_isResearcher"), data.isResearcher);
+CheckBoxFeedDataToForm($("#User_isCustomerService"), data.isCustomerService);
+CheckBoxFeedDataToForm($("#User_isTechnician"), data.isTechnician);
+CheckBoxFeedDataToForm($("#User_isAdministrator"), data.isAdministrator);
+CheckBoxFeedDataToForm($("#User_isInventoryManager"), data.isInventoryManager);
 
 }
 
@@ -40,9 +41,10 @@ UserObject.fullname = $("#User_fullname").val();
 UserObject.phone = $("#User_phone").val();
 UserObject.email = $("#User_email").val();
 UserObject.password = $("#User_password").val();
-UserObject.isAdmin = CheckBoxGetFromForm($("#User_isAdmin"));
-UserObject.isWorker = CheckBoxGetFromForm($("#User_isWorker"));
-UserObject.isResearcher = CheckBoxGetFromForm($("#User_isResearcher"));
+UserObject.isCustomerService = CheckBoxGetFromForm($("#User_isCustomerService"));
+UserObject.isTechnician = CheckBoxGetFromForm($("#User_isTechnician"));
+UserObject.isAdministrator = CheckBoxGetFromForm($("#User_isAdministrator"));
+UserObject.isInventoryManager = CheckBoxGetFromForm($("#User_isInventoryManager"));
 
 
     return UserObject;
@@ -175,9 +177,10 @@ var User_setupTable = function (result) {
                 { "data": "fullname" },
                 { "data": "phone" },
                 { "data": "email" },
-                { "data": "isAdmin" },
-                { "data": "isWorker" },
-                { "data": "isResearcher" },            
+                { "data": "isCustomerService" },
+                { "data": "isTechnician" },
+                { "data": "isAdministrator" },
+                { "data": "isInventoryManager" },            
         ],
         "columnDefs": [
             {

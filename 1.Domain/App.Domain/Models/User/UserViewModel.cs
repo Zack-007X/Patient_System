@@ -15,11 +15,13 @@ namespace App.Domain
 
         public string? password { get; set; }
 
-        public bool? isAdmin { get; set; }
+        public bool? isCustomerService { get; set; }
 
-        public bool? isWorker { get; set; }
+        public bool? isTechnician { get; set; }
 
-        public bool? isResearcher { get; set; }
+        public bool? isAdministrator { get; set; }
+
+        public bool? isInventoryManager { get; set; }
 
 
         

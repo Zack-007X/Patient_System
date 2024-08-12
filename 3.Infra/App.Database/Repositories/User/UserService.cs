@@ -113,9 +113,10 @@ namespace App.Database
                     phone = m_user.phone,
                     email = m_user.email,
                     password = m_user.password,
-                    isAdmin = m_user.isAdmin,
-                    isWorker = m_user.isWorker,
-                    isResearcher = m_user.isResearcher,
+                    isCustomerService = m_user.isCustomerService,
+                    isTechnician = m_user.isTechnician,
+                    isAdministrator = m_user.isAdministrator,
+                    isInventoryManager = m_user.isInventoryManager,
 
 
                     isActive = m_user.isActive,
@@ -162,9 +163,10 @@ namespace App.Database
                 existingEntity.phone = model.phone;
                 existingEntity.email = model.email;
                 existingEntity.password = model.password;
-                existingEntity.isAdmin = model.isAdmin;
-                existingEntity.isWorker = model.isWorker;
-                existingEntity.isResearcher = model.isResearcher;
+                existingEntity.isCustomerService = model.isCustomerService;
+                existingEntity.isTechnician = model.isTechnician;
+                existingEntity.isAdministrator = model.isAdministrator;
+                existingEntity.isInventoryManager = model.isInventoryManager;
 
 
                 if (is_force_save)
@@ -196,9 +198,10 @@ namespace App.Database
                 existingEntity.phone = i.phone;
                 existingEntity.email = i.email;
                 existingEntity.password = i.password;
-                existingEntity.isAdmin = i.isAdmin;
-                existingEntity.isWorker = i.isWorker;
-                existingEntity.isResearcher = i.isResearcher;
+                existingEntity.isCustomerService = i.isCustomerService;
+                existingEntity.isTechnician = i.isTechnician;
+                existingEntity.isAdministrator = i.isAdministrator;
+                existingEntity.isInventoryManager = i.isInventoryManager;
 
 
                         await _repository.UpdateWithoutCommitAsync(i.id.Value, existingEntity);

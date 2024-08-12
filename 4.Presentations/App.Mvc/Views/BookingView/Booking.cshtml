@@ -1,0 +1,266 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Booking";
+}
+
+<div class="modal fade" id="BookingModel" style="z-index:1500" tabindex="-1" role="dialog" aria-labelledby="BookingModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="BookingModelLabel">บันทึกข้อมูล Booking</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+<input class="form-control" type="hidden" id="Booking_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-3">
+	    <label id="lab_Booking_bookingNumber" for="Booking_bookingNumber">เลขที่การจอง</label>
+	    <input class="form-control" type="text" id="Booking_bookingNumber" iLabel="เลขที่การจอง" iRequire="false" iGroup="Booking"  />
+    </div>
+
+    <div class="form-group col-md-3">
+	    <label id="lab_Booking_customerId" for="Booking_customerId">ลูกค้า</label>
+	    <select class="form-control" id="Booking_customerId" iLabel="ลูกค้า" iRequire="false" iGroup="Booking" ></select>
+    </div>
+
+    <div class="form-group col-md-3">
+	    <label id="lab_Booking_isConfirm" for="Booking_isConfirm">Confirm แล้ว</label>
+	    <input class="form-control" type="checkbox" id="Booking_isConfirm"  />
+    </div>
+
+    <div class="form-group col-md-3">
+	    <label id="lab_Booking_staffId" for="Booking_staffId">ผู้ดูแลลูกค้า</label>
+	    <select class="form-control" id="Booking_staffId" iLabel="ผู้ดูแลลูกค้า" iRequire="false" iGroup="Booking" ></select>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_bookingDate" for="Booking_bookingDate">วันที่จอง</label>
+	    <input class="form-control" type="text" id="Booking_bookingDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันที่จอง" iRequire="false" iGroup="Booking"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_scheduledRepairDate" for="Booking_scheduledRepairDate">วันที่นัดซ่อม</label>
+	    <input class="form-control" type="text" id="Booking_scheduledRepairDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันที่นัดซ่อม" iRequire="false" iGroup="Booking"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_estimatedCost" for="Booking_estimatedCost">ราคาประเมิน หน่วยเป็น EA</label>
+	    <input class="form-control" type="text" oninput="formatInputNumber(this)" id="Booking_estimatedCost" iLabel="ราคาประเมิน หน่วยเป็น EA" iRequire="false" iGroup="Booking"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_spacecraftName" for="Booking_spacecraftName">ชื่อยานอวกาศ</label>
+	    <input class="form-control" type="text" id="Booking_spacecraftName" iLabel="ชื่อยานอวกาศ" iRequire="false" iGroup="Booking"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_model" for="Booking_model">รุ่นของยานอวกาศ</label>
+	    <input class="form-control" type="text" id="Booking_model" iLabel="รุ่นของยานอวกาศ" iRequire="false" iGroup="Booking"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_manufacturer" for="Booking_manufacturer">ผู้ผลิตยานอวกาศ</label>
+	    <input class="form-control" type="text" id="Booking_manufacturer" iLabel="ผู้ผลิตยานอวกาศ" iRequire="false" iGroup="Booking"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_yearOfManufacture" for="Booking_yearOfManufacture">ปีที่ผลิต</label>
+	    <input class="form-control" type="text" id="Booking_yearOfManufacture" iLabel="ปีที่ผลิต" iRequire="false" iGroup="Booking"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_registrationNumber" for="Booking_registrationNumber">หมายเลขทะเบียนยานอวกาศ</label>
+	    <input class="form-control" type="text" id="Booking_registrationNumber" iLabel="หมายเลขทะเบียนยานอวกาศ" iRequire="false" iGroup="Booking"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_capacity" for="Booking_capacity">ความจุหรือจำนวนผู้โดยสารที่รองรับได้</label>
+	    <input class="form-control" type="text" oninput="formatInputNumber(this)" id="Booking_capacity" iLabel="ความจุหรือจำนวนผู้โดยสารที่รองรับได้" iRequire="false" iGroup="Booking"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-6">
+	    <label id="lab_Booking_spacecraftNotes" for="Booking_spacecraftNotes">หมายเหตุเพิ่มเติมเกี่ยวกับยาน</label>
+	    <textarea  class="form-control" rows="4" cols="50" id="Booking_spacecraftNotes" iLabel="หมายเหตุเพิ่มเติมเกี่ยวกับยาน" iRequire="false" iGroup="Booking" ></textarea>
+    </div>
+
+    <div class="form-group col-md-6">
+	    <label id="lab_Booking_bookingNotes" for="Booking_bookingNotes">หมายเหตุ การ Booking</label>
+	    <textarea  class="form-control" rows="4" cols="50" id="Booking_bookingNotes" iLabel="หมายเหตุ การ Booking" iRequire="false" iGroup="Booking" ></textarea>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_spacecraftImage1" for="Booking_spacecraftImage1">รูปถ่ายยาน 1</label>
+	    <p>
+        <img id="Booking_spacecraftImage1_img" width="200" />
+                                <a id="Booking_spacecraftImage1_remove" href="javascript:removeImagePhoto('Booking_spacecraftImage1');" class="btn btn-danger">ลบไฟล์</a>
+                            </p>
+
+                            นำเข้าไฟล์ใหม่
+                            <input type="file" id="Booking_spacecraftImage1_file" />
+                            <input type="hidden" id="Booking_spacecraftImage1_hidURL" iLabel="รูปถ่ายยาน 1" iRequire="false" iGroup="Booking" />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_spacecraftImage2" for="Booking_spacecraftImage2">รูปถ่ายยาน 2</label>
+	    <p>
+        <img id="Booking_spacecraftImage2_img" width="200" />
+                                <a id="Booking_spacecraftImage2_remove" href="javascript:removeImagePhoto('Booking_spacecraftImage2');" class="btn btn-danger">ลบไฟล์</a>
+                            </p>
+
+                            นำเข้าไฟล์ใหม่
+                            <input type="file" id="Booking_spacecraftImage2_file" />
+                            <input type="hidden" id="Booking_spacecraftImage2_hidURL" iLabel="รูปถ่ายยาน 2" iRequire="false" iGroup="Booking" />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Booking_spacecraftImage3" for="Booking_spacecraftImage3">รูปถ่ายยาน 3</label>
+	    <p>
+        <img id="Booking_spacecraftImage3_img" width="200" />
+                                <a id="Booking_spacecraftImage3_remove" href="javascript:removeImagePhoto('Booking_spacecraftImage3');" class="btn btn-danger">ลบไฟล์</a>
+                            </p>
+
+                            นำเข้าไฟล์ใหม่
+                            <input type="file" id="Booking_spacecraftImage3_file" />
+                            <input type="hidden" id="Booking_spacecraftImage3_hidURL" iLabel="รูปถ่ายยาน 3" iRequire="false" iGroup="Booking" />
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:Booking_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">Booking</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+        
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Booking_bookingNumber' for='s_Booking_bookingNumber'>เลขที่การจอง</label>
+                            <input class="form-control" type="text" id="s_Booking_bookingNumber" iLabel="เลขที่การจอง" iRequire="false" iGroup="s_Booking" title='เลขที่การจอง' placeholder='เลขที่การจอง' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Booking_scheduledRepairDate' for='s_Booking_scheduledRepairDate'>วันที่นัดซ่อม</label>
+                            <input class="form-control" type="text" id="s_Booking_scheduledRepairDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันที่นัดซ่อม" iRequire="false" iGroup="s_Booking" title='วันที่นัดซ่อม' placeholder='วันที่นัดซ่อม' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Booking_spacecraftName' for='s_Booking_spacecraftName'>ชื่อยานอวกาศ</label>
+                            <input class="form-control" type="text" id="s_Booking_spacecraftName" iLabel="ชื่อยานอวกาศ" iRequire="false" iGroup="s_Booking" title='ชื่อยานอวกาศ' placeholder='ชื่อยานอวกาศ' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Booking_registrationNumber' for='s_Booking_registrationNumber'>หมายเลขทะเบียนยานอวกาศ</label>
+                            <input class="form-control" type="text" id="s_Booking_registrationNumber" iLabel="หมายเลขทะเบียนยานอวกาศ" iRequire="false" iGroup="s_Booking" title='หมายเลขทะเบียนยานอวกาศ' placeholder='หมายเลขทะเบียนยานอวกาศ' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Booking_staffId' for='s_Booking_staffId'>ผู้ดูแลลูกค้า</label>
+                            <select class="form-control" id="s_Booking_staffId" iLabel="ผู้ดูแลลูกค้า" iRequire="false" iGroup="s_Booking" title='ผู้ดูแลลูกค้า' placeholder='ผู้ดูแลลูกค้า'></select>
+                        </div>
+
+
+                    <div class="form-group col-sm-3">
+                        <button class="btn btn-info" onclick="javascript:Booking_DoSearch();"><i class="fa fa-search" style="font-size: 14px;"></i> ค้นหา</button>
+                        <button class="btn btn-info" onclick="javascript:Booking_GoCreate();"><i class="fa fa-plus" style="font-size: 14px;"></i> เพิ่มรายการ</button>
+                        <button style="display:none;" class="btn btn-info" onclick="javascript:Booking_GetSelect('id');">ดึงตัวเลือก</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="BookingTable" class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <!--<th>เลือก</th>-->
+                                    <th>เครื่องมือ</th>
+            <th><label id='h_Booking_bookingNumber'>เลขที่การจอง</label></th>
+            <th><label id='h_Booking_customerId'>ลูกค้า</label></th>
+            <th><label id='h_Booking_scheduledRepairDate'>วันที่นัดซ่อม</label></th>
+            <th><label id='h_Booking_estimatedCost'>ราคาประเมิน หน่วยเป็น EA</label></th>
+            <th><label id='h_Booking_isConfirm'>Confirm แล้ว</label></th>
+            <th><label id='h_Booking_spacecraftName'>ชื่อยานอวกาศ</label></th>
+            <th><label id='h_Booking_model'>รุ่นของยานอวกาศ</label></th>
+            <th><label id='h_Booking_manufacturer'>ผู้ผลิตยานอวกาศ</label></th>
+            <th><label id='h_Booking_yearOfManufacture'>ปีที่ผลิต</label></th>
+            <th><label id='h_Booking_registrationNumber'>หมายเลขทะเบียนยานอวกาศ</label></th>
+            <th><label id='h_Booking_staffId'>ผู้ดูแลลูกค้า</label></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/Booking/Booking.js"></script>
+    <script>
+        $(document).ready(function () {
+            Booking_InitiateDataTable();
+            Booking_InitialForm();
+            SetupValidationRemark("Booking");
+        });
+    </script>
+}
+

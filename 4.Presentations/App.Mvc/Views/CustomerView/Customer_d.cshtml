@@ -1,0 +1,100 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Customer";
+    Layout = "_LayoutDirect";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">Customer</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">       
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">บันทึกข้อมูล Customer</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+	<input class="form-control" type="hidden" id="Customer_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Customer_name" for="Customer_name">ชื่อลูกค้า</label>
+	    <input class="form-control" type="text" id="Customer_name" iLabel="ชื่อลูกค้า" iRequire="false" iGroup="Customer"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Customer_username" for="Customer_username">ชื่อผู้ใช้งาน</label>
+	    <input class="form-control" type="text" id="Customer_username" iLabel="ชื่อผู้ใช้งาน" iRequire="false" iGroup="Customer"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Customer_password" for="Customer_password">รหัสผ่าน</label>
+	    <input class="form-control" type="text" id="Customer_password" iLabel="รหัสผ่าน" iRequire="false" iGroup="Customer"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-6">
+	    <label id="lab_Customer_contactInfo" for="Customer_contactInfo">ข้อมูลติดต่อ</label>
+	    <textarea  class="form-control" rows="4" cols="50" id="Customer_contactInfo" iLabel="ข้อมูลติดต่อ" iRequire="false" iGroup="Customer" ></textarea>
+    </div>
+
+    <div class="form-group col-md-6">
+	    <label id="lab_Customer_address" for="Customer_address">ที่อยู่</label>
+	    <textarea  class="form-control" rows="4" cols="50" id="Customer_address" iLabel="ที่อยู่" iRequire="false" iGroup="Customer" ></textarea>
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" class="btn btn-default" onclick="javascript:window_close()" style="background-color: #fff;">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:Customer_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/Customer/Customer_d.js"></script>
+    <script>
+        $(document).ready(function () {
+            var id = getUrlParameter("id");
+            if (id) {
+                Customer_SetEditForm(id);
+            } else {
+                Customer_SetCreateForm();
+            }
+            SetupValidationRemark("Customer");
+        });
+    </script>
+}
+

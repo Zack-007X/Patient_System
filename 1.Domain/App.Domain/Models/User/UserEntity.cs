@@ -25,14 +25,21 @@ namespace App.Domain
         [MaxLength(1000), Column(Order = 6), Comment("รหัสผ่าน")]
         public string? password { get; set; }
 
-        [Column(Order = 7), Comment("เป็น Admin")]
-        public bool? isAdmin { get; set; }
+        [Column(Order = 7), Comment("เป็น ผู้ดูแลลูกค้า")]
+        public bool? isCustomerService { get; set; }
 
-        [Column(Order = 8), Comment("เป็น เจ้าหน้าที่ภาคสนาม")]
-        public bool? isWorker { get; set; }
+        [Column(Order = 8), Comment("เป็น ช่างซ่อม")]
+        public bool? isTechnician { get; set; }
 
-        [Column(Order = 9), Comment("เป็น นักวิจัย")]
-        public bool? isResearcher { get; set; }
+        [Column(Order = 9), Comment("เป็น Admin")]
+        public bool? isAdministrator { get; set; }
+
+        [Column(Order = 10), Comment("เป็น ผู้จัดการคลังสินค้า")]
+        public bool? isInventoryManager { get; set; }
+
+
+        public List<BookingEntity> Bookings { get; } = new();
+        public List<RepairEntity> Repairs { get; } = new();
 
 
     }
