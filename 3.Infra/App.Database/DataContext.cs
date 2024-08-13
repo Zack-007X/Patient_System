@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace App.Database
 {
+    
     public class DataContext : DbContext
     {
 
