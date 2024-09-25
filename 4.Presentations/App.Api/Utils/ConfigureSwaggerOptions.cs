@@ -69,7 +69,7 @@ namespace TTSW.Utils
         {
             var info = new OpenApiInfo()
             {
-                Title = "Fish Prevention Api Service Document",
+                Title = "Room Booking Api Service System",
                 Version = desc.ApiVersion.ToString()
             };
 

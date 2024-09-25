@@ -1,0 +1,168 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "RoleHasPermission";
+}
+
+<div class="modal fade" id="RoleHasPermissionModel" style="z-index:1500" tabindex="-1" role="dialog" aria-labelledby="RoleHasPermissionModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="RoleHasPermissionModelLabel">บันทึกข้อมูล RoleHasPermission</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+<input class="form-control" type="hidden" id="RoleHasPermission_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-6">
+	    <label id="lab_RoleHasPermission_masterRoleId" for="RoleHasPermission_masterRoleId">รหัสกลุ่มผู้ใช้</label>
+	    <select class="form-control" id="RoleHasPermission_masterRoleId" iLabel="รหัสกลุ่มผู้ใช้" iRequire="true" iGroup="RoleHasPermission" ></select>
+    </div>
+
+    <div class="form-group col-md-6">
+	    <label id="lab_RoleHasPermission_masterPermissionId" for="RoleHasPermission_masterPermissionId">รหัสสิทธิ์การใช้งาน</label>
+	    <select class="form-control" id="RoleHasPermission_masterPermissionId" iLabel="รหัสสิทธิ์การใช้งาน" iRequire="true" iGroup="RoleHasPermission" ></select>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-3">
+	    <label id="lab_RoleHasPermission_create" for="RoleHasPermission_create">สิทธิ์การเพิ่ม</label>
+	    <input class="form-control" type="text" id="RoleHasPermission_create" iLabel="สิทธิ์การเพิ่ม" iRequire="true" iGroup="RoleHasPermission"  />
+    </div>
+
+    <div class="form-group col-md-3">
+	    <label id="lab_RoleHasPermission_read" for="RoleHasPermission_read">สิทธิ์การอ่าน</label>
+	    <input class="form-control" type="text" id="RoleHasPermission_read" iLabel="สิทธิ์การอ่าน" iRequire="true" iGroup="RoleHasPermission"  />
+    </div>
+
+    <div class="form-group col-md-3">
+	    <label id="lab_RoleHasPermission_update" for="RoleHasPermission_update">สิทธิ์การแก้ไข</label>
+	    <input class="form-control" type="text" id="RoleHasPermission_update" iLabel="สิทธิ์การแก้ไข" iRequire="true" iGroup="RoleHasPermission"  />
+    </div>
+
+    <div class="form-group col-md-3">
+	    <label id="lab_RoleHasPermission_delete" for="RoleHasPermission_delete">สิทธิ์การลบ</label>
+	    <input class="form-control" type="text" id="RoleHasPermission_delete" iLabel="สิทธิ์การลบ" iRequire="true" iGroup="RoleHasPermission"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-12">
+	    <label id="lab_RoleHasPermission_remark" for="RoleHasPermission_remark">หมายเหตุ</label>
+	    <input class="form-control" type="text" id="RoleHasPermission_remark" iLabel="หมายเหตุ" iRequire="true" iGroup="RoleHasPermission"  />
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:RoleHasPermission_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">RoleHasPermission</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+        
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_RoleHasPermission_masterRoleId' for='s_RoleHasPermission_masterRoleId'>รหัสกลุ่มผู้ใช้</label>
+                            <select class="form-control" id="s_RoleHasPermission_masterRoleId" iLabel="รหัสกลุ่มผู้ใช้" iRequire="true" iGroup="s_RoleHasPermission" title='รหัสกลุ่มผู้ใช้' placeholder='รหัสกลุ่มผู้ใช้'></select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_RoleHasPermission_masterPermissionId' for='s_RoleHasPermission_masterPermissionId'>รหัสสิทธิ์การใช้งาน</label>
+                            <select class="form-control" id="s_RoleHasPermission_masterPermissionId" iLabel="รหัสสิทธิ์การใช้งาน" iRequire="true" iGroup="s_RoleHasPermission" title='รหัสสิทธิ์การใช้งาน' placeholder='รหัสสิทธิ์การใช้งาน'></select>
+                        </div>
+
+
+                    <div class="form-group col-sm-3">
+                        <button class="btn btn-info" onclick="javascript:RoleHasPermission_DoSearch();"><i class="fa fa-search" style="font-size: 14px;"></i> ค้นหา</button>
+                        <button class="btn btn-info" onclick="javascript:RoleHasPermission_GoCreate();"><i class="fa fa-plus" style="font-size: 14px;"></i> เพิ่มรายการ</button>
+                        <button style="display:none;" class="btn btn-info" onclick="javascript:RoleHasPermission_GetSelect('id');">ดึงตัวเลือก</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="RoleHasPermissionTable" class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <!--<th>เลือก</th>-->
+                                    <th>เครื่องมือ</th>
+            <th><label id='h_RoleHasPermission_masterRoleId'>รหัสกลุ่มผู้ใช้</label></th>
+            <th><label id='h_RoleHasPermission_masterPermissionId'>รหัสสิทธิ์การใช้งาน</label></th>
+            <th><label id='h_RoleHasPermission_create'>สิทธิ์การเพิ่ม</label></th>
+            <th><label id='h_RoleHasPermission_read'>สิทธิ์การอ่าน</label></th>
+            <th><label id='h_RoleHasPermission_update'>สิทธิ์การแก้ไข</label></th>
+            <th><label id='h_RoleHasPermission_delete'>สิทธิ์การลบ</label></th>
+            <th><label id='h_RoleHasPermission_remark'>หมายเหตุ</label></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/RoleHasPermission/RoleHasPermission.js"></script>
+    <script>
+        $(document).ready(function () {
+            RoleHasPermission_InitiateDataTable();
+            RoleHasPermission_InitialForm();
+            SetupValidationRemark("RoleHasPermission");
+        });
+    </script>
+}
+

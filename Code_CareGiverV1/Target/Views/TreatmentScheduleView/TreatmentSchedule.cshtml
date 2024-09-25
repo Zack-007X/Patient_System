@@ -1,0 +1,189 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "TreatmentSchedule";
+}
+
+<div class="modal fade" id="TreatmentScheduleModel" style="z-index:1500" tabindex="-1" role="dialog" aria-labelledby="TreatmentScheduleModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="TreatmentScheduleModelLabel">บันทึกข้อมูล TreatmentSchedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+<input class="form-control" type="hidden" id="TreatmentSchedule_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_TreatmentSchedule_surveyId" for="TreatmentSchedule_surveyId">รายงานการตรวจ</label>
+	    <select class="form-control" id="TreatmentSchedule_surveyId" iLabel="รายงานการตรวจ" iRequire="true" iGroup="TreatmentSchedule" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_TreatmentSchedule_planingTopic" for="TreatmentSchedule_planingTopic">แผน Treatment</label>
+	    <input class="form-control" type="text" id="TreatmentSchedule_planingTopic" iLabel="แผน Treatment" iRequire="true" iGroup="TreatmentSchedule"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_TreatmentSchedule_planingDetails" for="TreatmentSchedule_planingDetails">สถานะ Treatment</label>
+	    <input class="form-control" type="text" id="TreatmentSchedule_planingDetails" iLabel="สถานะ Treatment" iRequire="true" iGroup="TreatmentSchedule"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_TreatmentSchedule_startTreatmentDate" for="TreatmentSchedule_startTreatmentDate">วันเริ่มต้น Treatment</label>
+	    <input class="form-control" type="text" id="TreatmentSchedule_startTreatmentDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันเริ่มต้น Treatment" iRequire="true" iGroup="TreatmentSchedule"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_TreatmentSchedule_endtartTreatmentDate" for="TreatmentSchedule_endtartTreatmentDate">วันสุดท้าย Treatment</label>
+	    <input class="form-control" type="text" id="TreatmentSchedule_endtartTreatmentDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันสุดท้าย Treatment" iRequire="true" iGroup="TreatmentSchedule"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_TreatmentSchedule_CaregiverId" for="TreatmentSchedule_CaregiverId">ผู้ดูแล</label>
+	    <select class="form-control" id="TreatmentSchedule_CaregiverId" iLabel="ผู้ดูแล" iRequire="true" iGroup="TreatmentSchedule" ></select>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_TreatmentSchedule_TreatmentReportTopic" for="TreatmentSchedule_TreatmentReportTopic">ผลการ Treatment</label>
+	    <input class="form-control" type="text" id="TreatmentSchedule_TreatmentReportTopic" iLabel="ผลการ Treatment" iRequire="true" iGroup="TreatmentSchedule"  />
+    </div>
+
+    <div class="form-group col-md-8">
+	    <label id="lab_TreatmentSchedule_TreatmentReportDetails" for="TreatmentSchedule_TreatmentReportDetails">รายละเอียด ผลการ Treatment</label>
+	    <textarea  class="form-control" rows="4" cols="50" id="TreatmentSchedule_TreatmentReportDetails" iLabel="รายละเอียด ผลการ Treatment" iRequire="true" iGroup="TreatmentSchedule" ></textarea>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-8">
+	    <label id="lab_TreatmentSchedule_remark" for="TreatmentSchedule_remark">หมายเหตุ</label>
+	    <input class="form-control" type="text" id="TreatmentSchedule_remark" iLabel="หมายเหตุ" iRequire="true" iGroup="TreatmentSchedule"  />
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:TreatmentSchedule_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">TreatmentSchedule</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+        
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_TreatmentSchedule_surveyId' for='s_TreatmentSchedule_surveyId'>รายงานการตรวจ</label>
+                            <select class="form-control" id="s_TreatmentSchedule_surveyId" iLabel="รายงานการตรวจ" iRequire="true" iGroup="s_TreatmentSchedule" title='รายงานการตรวจ' placeholder='รายงานการตรวจ'></select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_TreatmentSchedule_planingTopic' for='s_TreatmentSchedule_planingTopic'>แผน Treatment</label>
+                            <input class="form-control" type="text" id="s_TreatmentSchedule_planingTopic" iLabel="แผน Treatment" iRequire="true" iGroup="s_TreatmentSchedule" title='แผน Treatment' placeholder='แผน Treatment' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_TreatmentSchedule_planingDetails' for='s_TreatmentSchedule_planingDetails'>สถานะ Treatment</label>
+                            <input class="form-control" type="text" id="s_TreatmentSchedule_planingDetails" iLabel="สถานะ Treatment" iRequire="true" iGroup="s_TreatmentSchedule" title='สถานะ Treatment' placeholder='สถานะ Treatment' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_TreatmentSchedule_CaregiverId' for='s_TreatmentSchedule_CaregiverId'>ผู้ดูแล</label>
+                            <select class="form-control" id="s_TreatmentSchedule_CaregiverId" iLabel="ผู้ดูแล" iRequire="true" iGroup="s_TreatmentSchedule" title='ผู้ดูแล' placeholder='ผู้ดูแล'></select>
+                        </div>
+
+
+                    <div class="form-group col-sm-3">
+                        <button class="btn btn-info" onclick="javascript:TreatmentSchedule_DoSearch();"><i class="fa fa-search" style="font-size: 14px;"></i> ค้นหา</button>
+                        <button class="btn btn-info" onclick="javascript:TreatmentSchedule_GoCreate();"><i class="fa fa-plus" style="font-size: 14px;"></i> เพิ่มรายการ</button>
+                        <button style="display:none;" class="btn btn-info" onclick="javascript:TreatmentSchedule_GetSelect('id');">ดึงตัวเลือก</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="TreatmentScheduleTable" class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <!--<th>เลือก</th>-->
+                                    <th>เครื่องมือ</th>
+            <th><label id='h_TreatmentSchedule_surveyId'>รายงานการตรวจ</label></th>
+            <th><label id='h_TreatmentSchedule_planingTopic'>แผน Treatment</label></th>
+            <th><label id='h_TreatmentSchedule_planingDetails'>สถานะ Treatment</label></th>
+            <th><label id='h_TreatmentSchedule_startTreatmentDate'>วันเริ่มต้น Treatment</label></th>
+            <th><label id='h_TreatmentSchedule_CaregiverId'>ผู้ดูแล</label></th>
+            <th><label id='h_TreatmentSchedule_TreatmentReportTopic'>ผลการ Treatment</label></th>
+            <th><label id='h_TreatmentSchedule_TreatmentReportDetails'>รายละเอียด ผลการ Treatment</label></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/TreatmentSchedule/TreatmentSchedule.js"></script>
+    <script>
+        $(document).ready(function () {
+            TreatmentSchedule_InitiateDataTable();
+            TreatmentSchedule_InitialForm();
+            SetupValidationRemark("TreatmentSchedule");
+        });
+    </script>
+}
+

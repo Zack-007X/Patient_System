@@ -1,0 +1,184 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Survey";
+}
+
+<div class="modal fade" id="SurveyModel" style="z-index:1500" tabindex="-1" role="dialog" aria-labelledby="SurveyModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="SurveyModelLabel">บันทึกข้อมูล Survey</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+<input class="form-control" type="hidden" id="Survey_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Survey_patientId" for="Survey_patientId">ผู้ป่วย</label>
+	    <select class="form-control" id="Survey_patientId" iLabel="ผู้ป่วย" iRequire="true" iGroup="Survey" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Survey_doctorId" for="Survey_doctorId">หมอที่ทำการตรวจ</label>
+	    <select class="form-control" id="Survey_doctorId" iLabel="หมอที่ทำการตรวจ" iRequire="true" iGroup="Survey" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Survey_masterPatientStateId" for="Survey_masterPatientStateId">สถานะคนไข้</label>
+	    <select class="form-control" id="Survey_masterPatientStateId" iLabel="สถานะคนไข้" iRequire="true" iGroup="Survey" ></select>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Survey_BloodPressure" for="Survey_BloodPressure">ความดันโลหิต</label>
+	    <input class="form-control" type="text" id="Survey_BloodPressure" iLabel="ความดันโลหิต" iRequire="true" iGroup="Survey"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Survey_OxygenLevel" for="Survey_OxygenLevel">ระดับเลือด</label>
+	    <input class="form-control" type="text" id="Survey_OxygenLevel" iLabel="ระดับเลือด" iRequire="true" iGroup="Survey"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Survey_HeartRate" for="Survey_HeartRate">อัตราการเต้นของหัวใจ</label>
+	    <input class="form-control" type="text" id="Survey_HeartRate" iLabel="อัตราการเต้นของหัวใจ" iRequire="true" iGroup="Survey"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Survey_SurveyDate" for="Survey_SurveyDate">วันที่ทำการตรวจ</label>
+	    <input class="form-control" type="text" id="Survey_SurveyDate" data-provide="datepicker" data-date-language="th-th" iLabel="วันที่ทำการตรวจ" iRequire="true" iGroup="Survey"  />
+    </div>
+
+    <div class="form-group col-md-8">
+	    <label id="lab_Survey_SurveyDetail" for="Survey_SurveyDetail">รายละเอียดการตรวจ</label>
+	    <textarea  class="form-control" rows="4" cols="50" id="Survey_SurveyDetail" iLabel="รายละเอียดการตรวจ" iRequire="true" iGroup="Survey" ></textarea>
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-12">
+	    <label id="lab_Survey_remark" for="Survey_remark">หมายเหตุ</label>
+	    <input class="form-control" type="text" id="Survey_remark" iLabel="หมายเหตุ" iRequire="true" iGroup="Survey"  />
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:Survey_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">Survey</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+        
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Survey_patientId' for='s_Survey_patientId'>ผู้ป่วย</label>
+                            <select class="form-control" id="s_Survey_patientId" iLabel="ผู้ป่วย" iRequire="true" iGroup="s_Survey" title='ผู้ป่วย' placeholder='ผู้ป่วย'></select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Survey_doctorId' for='s_Survey_doctorId'>หมอที่ทำการตรวจ</label>
+                            <select class="form-control" id="s_Survey_doctorId" iLabel="หมอที่ทำการตรวจ" iRequire="true" iGroup="s_Survey" title='หมอที่ทำการตรวจ' placeholder='หมอที่ทำการตรวจ'></select>
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Survey_masterPatientStateId' for='s_Survey_masterPatientStateId'>สถานะคนไข้</label>
+                            <select class="form-control" id="s_Survey_masterPatientStateId" iLabel="สถานะคนไข้" iRequire="true" iGroup="s_Survey" title='สถานะคนไข้' placeholder='สถานะคนไข้'></select>
+                        </div>
+
+
+                    <div class="form-group col-sm-3">
+                        <button class="btn btn-info" onclick="javascript:Survey_DoSearch();"><i class="fa fa-search" style="font-size: 14px;"></i> ค้นหา</button>
+                        <button class="btn btn-info" onclick="javascript:Survey_GoCreate();"><i class="fa fa-plus" style="font-size: 14px;"></i> เพิ่มรายการ</button>
+                        <button style="display:none;" class="btn btn-info" onclick="javascript:Survey_GetSelect('id');">ดึงตัวเลือก</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="SurveyTable" class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <!--<th>เลือก</th>-->
+                                    <th>เครื่องมือ</th>
+            <th><label id='h_Survey_patientId'>ผู้ป่วย</label></th>
+            <th><label id='h_Survey_doctorId'>หมอที่ทำการตรวจ</label></th>
+            <th><label id='h_Survey_masterPatientStateId'>สถานะคนไข้</label></th>
+            <th><label id='h_Survey_BloodPressure'>ความดันโลหิต</label></th>
+            <th><label id='h_Survey_OxygenLevel'>ระดับเลือด</label></th>
+            <th><label id='h_Survey_HeartRate'>อัตราการเต้นของหัวใจ</label></th>
+            <th><label id='h_Survey_SurveyDate'>วันที่ทำการตรวจ</label></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/Survey/Survey.js"></script>
+    <script>
+        $(document).ready(function () {
+            Survey_InitiateDataTable();
+            Survey_InitialForm();
+            SetupValidationRemark("Survey");
+        });
+    </script>
+}
+

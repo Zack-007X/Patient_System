@@ -1,0 +1,89 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "MasterPatientState";
+    Layout = "_LayoutDirect";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">MasterPatientState</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">       
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">บันทึกข้อมูล MasterPatientState</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+	<input class="form-control" type="hidden" id="MasterPatientState_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_MasterPatientState_code" for="MasterPatientState_code">เลขสถานะผู้ป่วย</label>
+	    <input class="form-control" type="text" id="MasterPatientState_code" iLabel="เลขสถานะผู้ป่วย" iRequire="false" iGroup="MasterPatientState"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_MasterPatientState_name" for="MasterPatientState_name">สถานะผู้ป่วย</label>
+	    <input class="form-control" type="text" id="MasterPatientState_name" iLabel="สถานะผู้ป่วย" iRequire="false" iGroup="MasterPatientState"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_MasterPatientState_remark" for="MasterPatientState_remark">หมายเหตุ</label>
+	    <input class="form-control" type="text" id="MasterPatientState_remark" iLabel="หมายเหตุ" iRequire="false" iGroup="MasterPatientState"  />
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" class="btn btn-default" onclick="javascript:window_close()" style="background-color: #fff;">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:MasterPatientState_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/MasterPatientState/MasterPatientState_d.js"></script>
+    <script>
+        $(document).ready(function () {
+            var id = getUrlParameter("id");
+            if (id) {
+                MasterPatientState_SetEditForm(id);
+            } else {
+                MasterPatientState_SetCreateForm();
+            }
+            SetupValidationRemark("MasterPatientState");
+        });
+    </script>
+}
+

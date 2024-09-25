@@ -1,0 +1,95 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "DrugHistory";
+    Layout = "_LayoutDirect";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">DrugHistory</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">       
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">บันทึกข้อมูล DrugHistory</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+	<input class="form-control" type="hidden" id="DrugHistory_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_DrugHistory_masterDrugID" for="DrugHistory_masterDrugID">ยา</label>
+	    <select class="form-control" id="DrugHistory_masterDrugID" iLabel="ยา" iRequire="false" iGroup="DrugHistory" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_DrugHistory_treatmentScheduleId" for="DrugHistory_treatmentScheduleId">รายการการ Treatment</label>
+	    <select class="form-control" id="DrugHistory_treatmentScheduleId" iLabel="รายการการ Treatment" iRequire="false" iGroup="DrugHistory" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_DrugHistory_amount" for="DrugHistory_amount">จำนวนยา</label>
+	    <input class="form-control" type="text" id="DrugHistory_amount" iLabel="จำนวนยา" iRequire="false" iGroup="DrugHistory"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-12">
+	    <label id="lab_DrugHistory_remark" for="DrugHistory_remark">หมายเหตุ</label>
+	    <input class="form-control" type="text" id="DrugHistory_remark" iLabel="หมายเหตุ" iRequire="false" iGroup="DrugHistory"  />
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" class="btn btn-default" onclick="javascript:window_close()" style="background-color: #fff;">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:DrugHistory_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/DrugHistory/DrugHistory_d.js"></script>
+    <script>
+        $(document).ready(function () {
+            var id = getUrlParameter("id");
+            if (id) {
+                DrugHistory_SetEditForm(id);
+            } else {
+                DrugHistory_SetCreateForm();
+            }
+            SetupValidationRemark("DrugHistory");
+        });
+    </script>
+}
+

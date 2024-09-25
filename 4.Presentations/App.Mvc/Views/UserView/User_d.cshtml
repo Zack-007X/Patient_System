@@ -1,0 +1,121 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "User";
+    Layout = "_LayoutDirect";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">User</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">       
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">บันทึกข้อมูล User</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+	<input class="form-control" type="hidden" id="User_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_User_username" for="User_username">ชื่อผู้ใช้</label>
+	    <input class="form-control" type="text" id="User_username" iLabel="ชื่อผู้ใช้" iRequire="false" iGroup="User"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_User_passwordHash" for="User_passwordHash">รหัสผ่าน</label>
+	    <input class="form-control" type="text" id="User_passwordHash" iLabel="รหัสผ่าน" iRequire="false" iGroup="User"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_User_email" for="User_email">อีเมล</label>
+	    <input class="form-control" type="text" id="User_email" iLabel="อีเมล" iRequire="false" iGroup="User"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_User_masterPrefixId" for="User_masterPrefixId">คำนำหน้า</label>
+	    <select class="form-control" id="User_masterPrefixId" iLabel="คำนำหน้า" iRequire="false" iGroup="User" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_User_firstname" for="User_firstname">ชื่อจริงผู้ใช้</label>
+	    <input class="form-control" type="text" id="User_firstname" iLabel="ชื่อจริงผู้ใช้" iRequire="false" iGroup="User"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_User_lastname" for="User_lastname">นามสกุลผู้ใช้</label>
+	    <input class="form-control" type="text" id="User_lastname" iLabel="นามสกุลผู้ใช้" iRequire="false" iGroup="User"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_User_telephoneNumber" for="User_telephoneNumber">เบอร์โทรศัพท์</label>
+	    <input class="form-control" type="text" id="User_telephoneNumber" iLabel="เบอร์โทรศัพท์" iRequire="false" iGroup="User"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_User_masterRoleId" for="User_masterRoleId">กลุ่มผู้ใช้</label>
+	    <select class="form-control" id="User_masterRoleId" iLabel="กลุ่มผู้ใช้" iRequire="false" iGroup="User" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_User_remark" for="User_remark">หมายเหตุ</label>
+	    <input class="form-control" type="text" id="User_remark" iLabel="หมายเหตุ" iRequire="false" iGroup="User"  />
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" class="btn btn-default" onclick="javascript:window_close()" style="background-color: #fff;">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:User_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/User/User_d.js"></script>
+    <script>
+        $(document).ready(function () {
+            var id = getUrlParameter("id");
+            if (id) {
+                User_SetEditForm(id);
+            } else {
+                User_SetCreateForm();
+            }
+            SetupValidationRemark("User");
+        });
+    </script>
+}
+

@@ -1,0 +1,91 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "UserHasSpecial";
+    Layout = "_LayoutDirect";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">UserHasSpecial</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">       
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">บันทึกข้อมูล UserHasSpecial</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+	<input class="form-control" type="hidden" id="UserHasSpecial_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-6">
+	    <label id="lab_UserHasSpecial_masterRoleId" for="UserHasSpecial_masterRoleId">รหัสกลุ่มผู้ใช้</label>
+	    <select class="form-control" id="UserHasSpecial_masterRoleId" iLabel="รหัสกลุ่มผู้ใช้" iRequire="false" iGroup="UserHasSpecial" ></select>
+    </div>
+
+    <div class="form-group col-md-6">
+	    <label id="lab_UserHasSpecial_specialSkill" for="UserHasSpecial_specialSkill">ความเชี่ยวชาญ</label>
+	    <input class="form-control" type="text" id="UserHasSpecial_specialSkill" iLabel="ความเชี่ยวชาญ" iRequire="false" iGroup="UserHasSpecial"  />
+    </div>
+</div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-12">
+	    <label id="lab_UserHasSpecial_remark" for="UserHasSpecial_remark">หมายเหตุ</label>
+	    <input class="form-control" type="text" id="UserHasSpecial_remark" iLabel="หมายเหตุ" iRequire="false" iGroup="UserHasSpecial"  />
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" class="btn btn-default" onclick="javascript:window_close()" style="background-color: #fff;">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:UserHasSpecial_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/UserHasSpecial/UserHasSpecial_d.js"></script>
+    <script>
+        $(document).ready(function () {
+            var id = getUrlParameter("id");
+            if (id) {
+                UserHasSpecial_SetEditForm(id);
+            } else {
+                UserHasSpecial_SetCreateForm();
+            }
+            SetupValidationRemark("UserHasSpecial");
+        });
+    </script>
+}
+

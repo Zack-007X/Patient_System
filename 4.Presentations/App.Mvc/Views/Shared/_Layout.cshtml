@@ -84,7 +84,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="#" class="brand-link d-block" style="max-width: 250px;">
-    <span class="brand-text font-weight-light text-wrap">Universal Spacecraft Repair Management System</span>
+    <span class="brand-text font-weight-light text-wrap">Room Booking Management System</span>
 </a>
 
             <!-- Sidebar -->
@@ -93,85 +93,182 @@
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-                        <li class="nav-header">ข้อมูลหลัก</li>
-
+                        <li class="nav-header">ข้อมูลกิจกรรมภายในระบบ</li>
                         <li class="nav-item">
-                            <a href="../UserView/User" class="nav-link">
-                                <i class="nav-icon fas fa-tasks"></i>
+                            <a href="../RequestRoomBookingView/RequestRoomBooking" class="nav-link"> 
+                                <i class="nav-icon fas fa-calendar-check"></i>
                                 <p>
-                                    รายชื่อผู้ใช้งาน
+                                    ข้อมูลการจองห้องประชุม
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../RequestHardwareBookingView/RequestHardwareBooking" class="nav-link"> 
+                                <i class="nav-icon fas fa-tools"></i>
+                                <p>
+                                    ข้อมูลประวัติคำร้องขอใช้อุปกรณ์
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../AcceptedStatusView/AcceptedStatus" class="nav-link"> 
+                                <i class="nav-icon fas fa-check"></i>
+                                <p>
+                                    ข้อมูลสถานะการอนุมัติ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../ReportView/Report" class="nav-link"> 
+                                <i class="nav-icon fas fa-file-alt"></i>
+                                <p>
+                                    ข้อมูลรายงาน
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../MasterBookingTypeView/MasterBookingType" class="nav-link"> 
+                                <i class="nav-icon fas fa-calendar-alt"></i>
+                                <p>
+                                    ข้อมูลประเภทการจอง
                                 </p>
                             </a>
                         </li>
 
-                        <li class="nav-item">
-                            <a href="../CustomerView/Customer" class="nav-link">
+                        <li class="nav-header">ข้อมูลผู้ใช้</li>
+
+                         <li class="nav-item">
+                            <a href="../MasterPrefixView/MasterPrefix" class="nav-link"> 
                                 <i class="nav-icon fas fa-tasks"></i>
                                 <p>
-                                    รายชื่อลูกค้า
+                                    ข้อมูลคำนำหน้าชื่อ
                                 </p>
                             </a>
                         </li>
-
-
-                        <li class="nav-header">ข้อมูลการดำเนินงาน</li>
-
                         <li class="nav-item">
-                            <a href="../BookingView/Booking" class="nav-link">
-                                <i class="nav-icon fas fa-tasks"></i>
+                            <a href="../UserView/User" class="nav-link"> 
+                                <i class="nav-icon fas fa-user"></i>
                                 <p>
-                                    การจองซ่อม
+                                    ข้อมูลผู้ใช้งาน
                                 </p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="../RepairView/Repair" class="nav-link">
-                                <i class="nav-icon fas fa-tasks"></i>
+                            <a href="../MasterRoleView/MasterRole" class="nav-link"> 
+                                <i class="nav-icon fas fa-user-shield"></i>
                                 <p>
-                                    การซ่อม
+                                    ข้อมูลกลุ่มผู้ใช้งาน
                                 </p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="../PaymentView/Payment" class="nav-link">
-                                <i class="nav-icon fas fa-tasks"></i>
+                            <a href="../MasterPositionView/MasterPosition" class="nav-link"> 
+                                <i class="nav-icon fas fa-briefcase"></i>
                                 <p>
-                                    การชำระเงิน
+                                    ข้อมูลตำแหน่งผู้ใช้งาน
                                 </p>
                             </a>
                         </li>
-
-                        <li class="nav-header">รายงาน</li>
-
                         <li class="nav-item">
-                            <a href="../BookingView/Booking_report" class="nav-link">
-                                <i class="nav-icon fas fa-tasks"></i>
+                            <a href="../MasterPermissionView/MasterPermission" class="nav-link"> 
+                                <i class="nav-icon fas fa-lock"></i>
                                 <p>
-                                    พิมพ์ใบจองซ่อม
+                                    ข้อมูลสิทธิ์ผู้ใช้งาน
                                 </p>
                             </a>
                         </li>
-
                         <li class="nav-item">
-                            <a href="../RepairView/Repair_report" class="nav-link">
-                                <i class="nav-icon fas fa-tasks"></i>
+                            <a href="../RoleHasPermissionView/RoleHasPermission" class="nav-link"> 
+                                <i class="nav-icon fas fa-check-circle"></i>
                                 <p>
-                                    พิมพ์ใบซ่อม
+                                    ข้อมูลสิทธิ์ของกลุ่มผู้ใช้งาน
                                 </p>
                             </a>
                         </li>
-
+                        <li class="nav-header">ข้อมูลห้องประชุม</li>
                         <li class="nav-item">
-                            <a href="../PaymentView/Payment_report" class="nav-link">
-                                <i class="nav-icon fas fa-tasks"></i>
+                            <a href="../MasterRoomView/MasterRoom" class="nav-link"> 
+                                <i class="nav-icon fas fa-building"></i>
                                 <p>
-                                    พิมพ์ใบชำระเงิน
+                                    ข้อมูลห้อง
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="../MasterHardwareView/MasterHardware" class="nav-link"> 
+                                <i class="nav-icon fas fa-tools"></i>
+                                <p>
+                                    ข้อมูลอุปกรณ์
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../MasterBuildingView/MasterBuilding" class="nav-link"> 
+                                <i class="nav-icon fas fa-home"></i>
+                                <p>
+                                    ข้อมูลอาคาร
+                                </p>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="../MasterRoomLayoutView/MasterRoomLayout" class="nav-link"> 
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    ข้อมูลรูปแบบการจัดห้อง
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../MasterRoomTypeView/MasterRoomType" class="nav-link"> 
+                                <i class="nav-icon fas fa-list"></i>
+                                <p>
+                                    ข้อมูลประเภทห้อง
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../MasterImageRoomView/MasterImageRoom" class="nav-link"> 
+                                <i class="nav-icon fas fa-image"></i>
+                                <p>
+                                    ข้อมูลรูปภาพของห้อง
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-header">ข้อมูลหน่วยงาน</li>
+                        <li class="nav-item">
+                            <a href="../MasterOrgGroupView/MasterOrgGroup" class="nav-link"> 
+                                <i class="nav-icon fas fa-sitemap"></i>
+                                <p>
+                                    ข้อมูลหน่วยงาน
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../MasterOrgDepartmentView/MasterOrgDepartment" class="nav-link"> 
+                                <i class="nav-icon fas fa-sitemap"></i>
+                                <p>
+                                    ข้อมูลส่วนราชการ
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../MasterOrgDivisionView/MasterOrgDivision" class="nav-link"> 
+                                <i class="nav-icon fas fa-sitemap"></i>
+                                <p>
+                                    ข้อมูลส่วนราชการย่อย
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="../MasterOrgSubDivisionView/MasterOrgSubDivision" class="nav-link"> 
+                                <i class="nav-icon fas fa-sitemap"></i>
+                                <p>
+                                    ข้อมูลกอง/ฝ่าย
+                                </p>
+                            </a>
+                        </li>
+                        
 
                     </ul>
                 </nav>

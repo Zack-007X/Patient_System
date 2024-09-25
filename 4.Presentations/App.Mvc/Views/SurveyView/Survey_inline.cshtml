@@ -1,0 +1,95 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Survey";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">Survey</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">จัดการ Survey</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <button type="button" class="btn btn-primary" onclick="javascript:Survey_Add()">
+                            <i class="fa fa-plus"></i> เพิ่มรายการ
+                        </button>                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="SurveyTable" class="display table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ลำดับ</th>
+<th><label id='h_Survey_patientId'>ผู้ป่วย</label></th>
+<th><label id='h_Survey_doctorId'>หมอที่ทำการตรวจ</label></th>
+<th><label id='h_Survey_masterPatientStateId'>สถานะคนไข้</label></th>
+<th><label id='h_Survey_BloodPressure'>ความดันโลหิต</label></th>
+<th><label id='h_Survey_OxygenLevel'>ระดับเลือด</label></th>
+<th><label id='h_Survey_HeartRate'>อัตราการเต้นของหัวใจ</label></th>
+<th><label id='h_Survey_SurveyDate'>วันที่ทำการตรวจ</label></th>
+<th><label id='h_Survey_SurveyDetail'>รายละเอียดการตรวจ</label></th>
+<th><label id='h_Survey_remark'>หมายเหตุ</label></th>
+
+                                    <th>กิจกรรม</th>
+                                </tr>
+                            </thead>
+                            <tbody class="thin-border-bottom" id="SurveyBody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:Survey_Save(getUrlParameter('id'))">บันทึก</button>
+            </div>
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/Survey/Survey_inline.js"></script>
+    <script>
+        $(document).ready(function () {
+            //var id = getUrlParameter("id");
+            //if (id) {
+            //    Survey_InitialForm(id);
+            //}
+            Survey_InitialForm('');
+        });
+
+        $(document).on("change", ".input_score", function () {
+            Survey_Summary();
+        });
+    </script>
+}

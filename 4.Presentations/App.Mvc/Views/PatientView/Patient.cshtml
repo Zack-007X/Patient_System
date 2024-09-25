@@ -1,0 +1,199 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
+@{
+    ViewData["Title"] = "Patient";
+}
+
+<div class="modal fade" id="PatientModel" style="z-index:1500" tabindex="-1" role="dialog" aria-labelledby="PatientModelLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="PatientModelLabel">บันทึกข้อมูล Patient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+
+<input class="form-control" type="hidden" id="Patient_id" />
+
+<div class='row'></div>
+<div class='row'></div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_masterPrefixId" for="Patient_masterPrefixId">คำนำหน้า</label>
+	    <select class="form-control" id="Patient_masterPrefixId" iLabel="คำนำหน้า" iRequire="true" iGroup="Patient" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_firstname" for="Patient_firstname">ชื่อจริงผู้ใช้</label>
+	    <input class="form-control" type="text" id="Patient_firstname" iLabel="ชื่อจริงผู้ใช้" iRequire="true" iGroup="Patient"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_lastname" for="Patient_lastname">นามสกุลผู้ใช้</label>
+	    <input class="form-control" type="text" id="Patient_lastname" iLabel="นามสกุลผู้ใช้" iRequire="true" iGroup="Patient"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_brithDate" for="Patient_brithDate">เบอร์โทรศัพท์</label>
+	    <input class="form-control" type="text" id="Patient_brithDate" data-provide="datepicker" data-date-language="th-th" iLabel="เบอร์โทรศัพท์" iRequire="true" iGroup="Patient"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_masterGenderId" for="Patient_masterGenderId">เพศ</label>
+	    <select class="form-control" id="Patient_masterGenderId" iLabel="เพศ" iRequire="true" iGroup="Patient" ></select>
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_age" for="Patient_age">อายุ</label>
+	    <input class="form-control" type="text" id="Patient_age" iLabel="อายุ" iRequire="true" iGroup="Patient"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_height" for="Patient_height">ส่วนสูง</label>
+	    <input class="form-control" type="text" id="Patient_height" iLabel="ส่วนสูง" iRequire="true" iGroup="Patient"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_weight" for="Patient_weight">น้ำหนัก</label>
+	    <input class="form-control" type="text" id="Patient_weight" iLabel="น้ำหนัก" iRequire="true" iGroup="Patient"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_telephoneNumber" for="Patient_telephoneNumber">เบอร์โทรศัพท์ผู้ป่วย</label>
+	    <input class="form-control" type="text" id="Patient_telephoneNumber" iLabel="เบอร์โทรศัพท์ผู้ป่วย" iRequire="true" iGroup="Patient"  />
+    </div>
+</div>
+<div class='row'>
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_relativeName" for="Patient_relativeName">ชื่่อญาติที่ติดต่อได้</label>
+	    <input class="form-control" type="text" id="Patient_relativeName" iLabel="ชื่่อญาติที่ติดต่อได้" iRequire="true" iGroup="Patient"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_relativeContract" for="Patient_relativeContract">เบอร์โทรศัพท์ญาติที่ติดต่อได้</label>
+	    <input class="form-control" type="text" id="Patient_relativeContract" iLabel="เบอร์โทรศัพท์ญาติที่ติดต่อได้" iRequire="true" iGroup="Patient"  />
+    </div>
+
+    <div class="form-group col-md-4">
+	    <label id="lab_Patient_remark" for="Patient_remark">หมายเหตุ</label>
+	    <input class="form-control" type="text" id="Patient_remark" iLabel="หมายเหตุ" iRequire="true" iGroup="Patient"  />
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                <button type="button" class="btn btn-primary" onclick="javascript:Patient_PutUpdate()">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>@Configuration["SiteInformation:modulename"]</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]">หน้าแรก</a></li>
+                    <li class="breadcrumb-item "><a href="@Configuration["SiteInformation:mainsite"]@Configuration["SiteInformation:appsite"]">@Configuration["SiteInformation:modulename"]</a></li>
+                    <li class="breadcrumb-item active">Patient</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+        
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Patient_firstname' for='s_Patient_firstname'>ชื่อจริงผู้ใช้</label>
+                            <input class="form-control" type="text" id="s_Patient_firstname" iLabel="ชื่อจริงผู้ใช้" iRequire="true" iGroup="s_Patient" title='ชื่อจริงผู้ใช้' placeholder='ชื่อจริงผู้ใช้' />
+                        </div>
+
+                        <div class="form-group col-md-3">
+                            <label id='lab_s_Patient_lastname' for='s_Patient_lastname'>นามสกุลผู้ใช้</label>
+                            <input class="form-control" type="text" id="s_Patient_lastname" iLabel="นามสกุลผู้ใช้" iRequire="true" iGroup="s_Patient" title='นามสกุลผู้ใช้' placeholder='นามสกุลผู้ใช้' />
+                        </div>
+
+
+                    <div class="form-group col-sm-3">
+                        <button class="btn btn-info" onclick="javascript:Patient_DoSearch();"><i class="fa fa-search" style="font-size: 14px;"></i> ค้นหา</button>
+                        <button class="btn btn-info" onclick="javascript:Patient_GoCreate();"><i class="fa fa-plus" style="font-size: 14px;"></i> เพิ่มรายการ</button>
+                        <button style="display:none;" class="btn btn-info" onclick="javascript:Patient_GetSelect('id');">ดึงตัวเลือก</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+        <!-- general form elements -->
+        <div class="card card-primary">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table id="PatientTable" class="table table-hover text-nowrap">
+                            <thead>
+                                <tr>
+                                    <!--<th>เลือก</th>-->
+                                    <th>เครื่องมือ</th>
+            <th><label id='h_Patient_masterPrefixId'>คำนำหน้า</label></th>
+            <th><label id='h_Patient_firstname'>ชื่อจริงผู้ใช้</label></th>
+            <th><label id='h_Patient_lastname'>นามสกุลผู้ใช้</label></th>
+            <th><label id='h_Patient_brithDate'>เบอร์โทรศัพท์</label></th>
+            <th><label id='h_Patient_masterGenderId'>เพศ</label></th>
+            <th><label id='h_Patient_age'>อายุ</label></th>
+            <th><label id='h_Patient_height'>ส่วนสูง</label></th>
+            <th><label id='h_Patient_weight'>น้ำหนัก</label></th>
+            <th><label id='h_Patient_telephoneNumber'>เบอร์โทรศัพท์ผู้ป่วย</label></th>
+            <th><label id='h_Patient_relativeName'>ชื่่อญาติที่ติดต่อได้</label></th>
+            <th><label id='h_Patient_relativeContract'>เบอร์โทรศัพท์ญาติที่ติดต่อได้</label></th>
+            <th><label id='h_Patient_remark'>หมายเหตุ</label></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+
+    </div><!-- /.container-fluid -->
+
+</section>
+<!-- /.content -->
+
+@section FooterPlaceHolder{
+    <script src="~/js/Patient/Patient.js"></script>
+    <script>
+        $(document).ready(function () {
+            Patient_InitiateDataTable();
+            Patient_InitialForm();
+            SetupValidationRemark("Patient");
+        });
+    </script>
+}
+
